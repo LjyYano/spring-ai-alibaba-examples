@@ -141,6 +141,10 @@ java -Dspring.ai.mcp.server.stdio=true \
 
 #### WebFlux 客户端
 
+##### 代码示例
+
+代码文件为 org.springframework.ai.mcp.sample.client.ClientSse，可以直接运行测试。
+
 ```java
 // 配置 WebFlux 客户端
 var transport = new WebFluxSseClientTransport(
@@ -157,7 +161,25 @@ System.out.println("\n>>> QUESTION: " + userInput);
 System.out.println("\n>>> ASSISTANT: " + chatClient.prompt(userInput).call().content());
 ```
 
+##### mcp setting 配置示例
+
+在 cursor、cline 等 MCP 客户端中，本示例可以使用如下配置：
+
+```json
+{
+  "mcpServers": {
+    "weather-local": {
+      "url": "http://localhost:8080/sse"
+    }
+  }
+}
+```
+
 #### STDIO 客户端
+
+##### 代码示例
+
+代码文件为 org.springframework.ai.mcp.sample.client.ClientStdio，可以直接运行测试。
 
 ```java
 var stdioParams = ServerParameters.builder("java")
@@ -170,6 +192,27 @@ var stdioParams = ServerParameters.builder("java")
 
 var transport = new StdioClientTransport(stdioParams);
 new SampleClient(transport).run();
+```
+
+##### mcp setting 配置示例
+
+在 cursor、cline 等 MCP 客户端中，本示例可以使用如下配置：
+
+```json
+{
+  "mcpServers": {
+    "weather-local": {
+      "command": "java",
+      "args": [
+        "-Dspring.ai.mcp.server.stdio=true",
+        "-Dspring.main.web-application-type=none",
+        "-Dlogging.pattern.console=",
+        "-jar",
+        "/Users/yano/code/spring-ai-alibaba-examples/spring-ai-alibaba-mcp-example/starter-example/server/starter-webflux-server/target/mcp-starter-webflux-server-0.0.1-SNAPSHOT.jar"
+      ]
+    }
+  }
+}
 ```
 
 ## 工具调用示例
