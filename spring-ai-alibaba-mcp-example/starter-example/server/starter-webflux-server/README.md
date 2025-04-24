@@ -208,7 +208,7 @@ new SampleClient(transport).run();
         "-Dspring.main.web-application-type=none",
         "-Dlogging.pattern.console=",
         "-jar",
-        "/Users/yano/code/spring-ai-alibaba-examples/spring-ai-alibaba-mcp-example/starter-example/server/starter-webflux-server/target/mcp-starter-webflux-server-0.0.1-SNAPSHOT.jar"
+        "target/mcp-starter-webflux-server-0.0.1-SNAPSHOT.jar"
       ]
     }
   }
