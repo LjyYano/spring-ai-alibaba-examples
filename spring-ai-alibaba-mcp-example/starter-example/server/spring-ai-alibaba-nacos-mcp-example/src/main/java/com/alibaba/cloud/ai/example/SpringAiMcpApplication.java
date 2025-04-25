@@ -29,10 +29,10 @@ import org.springframework.context.annotation.Bean;
  * @since 2025/4/21 20:00
  */
 @SpringBootApplication
-public class Application {
+public class SpringAiMcpApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(Application.class, args);
+        SpringApplication.run(SpringAiMcpApplication.class, args);
     }
 
     @Bean
